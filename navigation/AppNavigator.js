@@ -13,7 +13,6 @@ import HomeScreen from "../screens/HomeScreen";
 
 const windowWidth = Dimensions.get("window").width;
 
-// PreTabStackNavigator
 const PreTabStack = createStackNavigator();
 function PreTabStackNavigator() {
   return (
@@ -28,7 +27,6 @@ function PreTabStackNavigator() {
   );
 }
 
-// Create a new stack for NutritionResults with BottomTabs
 const NutritionStack = createStackNavigator();
 function NutritionStackNavigator() {
   return (
@@ -41,7 +39,6 @@ function NutritionStackNavigator() {
   );
 }
 
-// BottomTabNavigator
 const Tab = createBottomTabNavigator();
 function BottomTabNavigator() {
   const navigation = useNavigation();
@@ -173,7 +170,7 @@ const AppNavigator = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 68,
+    height: 88,
     paddingHorizontal: 20,
     paddingTop: 12,
     paddingBottom: 12,
