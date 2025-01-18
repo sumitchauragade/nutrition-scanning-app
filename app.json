@@ -4,6 +4,12 @@
     "slug": "SampleProject",
     "version": "1.0.0",
     "orientation": "portrait",
+    "statusBar": {
+      "hidden": false,              
+      "backgroundColor": "transparent", 
+      "style": "light",              
+      "translucent": true           
+    },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
