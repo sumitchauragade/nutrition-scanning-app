@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, TouchableOpacity, Text, Image, Dimensions, Animated } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Image,
+  Dimensions,
+  Animated,
+} from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { BlurView } from "expo-blur";
-import MaskedView from "@react-native-masked-view/masked-view";
-import { LinearGradient } from 'expo-linear-gradient';
-
+import { LinearGradient } from "expo-linear-gradient";
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 const CameraScreen = ({ navigation }) => {
   const [facing, setFacing] = useState("back");
   const [permission, requestPermission] = useCameraPermissions();
-
 
   if (!permission) {
     return <View />;
@@ -36,8 +41,8 @@ const CameraScreen = ({ navigation }) => {
   const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
   const leftRightMarginPercent = 0.1;
-  const topMarginPercent = 0.30;
-  const bottomMarginPercent = 0.20;
+  const topMarginPercent = 0.3;
+  const bottomMarginPercent = 0.2;
 
   const leftRightMargin = screenWidth * leftRightMarginPercent;
   const topMargin = screenHeight * topMarginPercent;
@@ -50,12 +55,11 @@ const CameraScreen = ({ navigation }) => {
 
   const adjustedLeftRightMargin = (screenWidth - scannerBoxSize) / 2;
   const adjustedTopMargin = topMargin;
-  const adjustedBottomMargin = screenHeight - adjustedTopMargin - scannerBoxSize;
+  const adjustedBottomMargin =
+    screenHeight - adjustedTopMargin - scannerBoxSize;
 
   const cornerSize = scannerBoxSize * 0.2;
-  const halfCornerSize = cornerSize / 2; // 20% of side length
-
-
+  const halfCornerSize = cornerSize / 2;
 
   const handleCapturePress = () => {
     navigation.navigate("ScanningProgress");
@@ -63,21 +67,12 @@ const CameraScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Fullscreen Camera */}
       <CameraView style={StyleSheet.absoluteFill} facing={facing} />
 
       <View style={styles.overlay}>
+        <View style={[styles.overlayTop, { height: adjustedTopMargin }]} />
         <View
-          style={[
-            styles.overlayTop,
-            { height: adjustedTopMargin },
-          ]}
-        />
-        <View
-          style={[
-            styles.overlayBottom,
-            { height: adjustedBottomMargin },
-          ]}
+          style={[styles.overlayBottom, { height: adjustedBottomMargin }]}
         />
         <View
           style={[
@@ -112,42 +107,48 @@ const CameraScreen = ({ navigation }) => {
           },
         ]}
       >
-        {/* Corner Elements */}
-        <View style={[
-          styles.corner,
-          styles.topLeftCorner,
-          {
-            width: cornerSize,
-            height: cornerSize,
-          }
-        ]} />
-        <View style={[
-          styles.corner,
-          styles.topRightCorner,
-          {
-            width: cornerSize,
-            height: cornerSize,
-          }
-        ]} />
-        <View style={[
-          styles.corner,
-          styles.bottomLeftCorner,
-          {
-            width: cornerSize,
-            height: cornerSize,
-          }
-        ]} />
-        <View style={[
-          styles.corner,
-          styles.bottomRightCorner,
-          {
-            width: cornerSize,
-            height: cornerSize,
-          }
-        ]} />
+        <View
+          style={[
+            styles.corner,
+            styles.topLeftCorner,
+            {
+              width: cornerSize,
+              height: cornerSize,
+            },
+          ]}
+        />
+        <View
+          style={[
+            styles.corner,
+            styles.topRightCorner,
+            {
+              width: cornerSize,
+              height: cornerSize,
+            },
+          ]}
+        />
+        <View
+          style={[
+            styles.corner,
+            styles.bottomLeftCorner,
+            {
+              width: cornerSize,
+              height: cornerSize,
+            },
+          ]}
+        />
+        <View
+          style={[
+            styles.corner,
+            styles.bottomRightCorner,
+            {
+              width: cornerSize,
+              height: cornerSize,
+            },
+          ]}
+        />
       </View>
 
-      {/* Top Bar */}
       <View style={styles.topBar}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
@@ -163,7 +164,6 @@ const CameraScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Instructions Box */}
       <BlurView intensity={48} style={styles.instructionsBox}>
         <View style={styles.contentWrapper}>
           <Image
@@ -180,7 +180,6 @@ const CameraScreen = ({ navigation }) => {
         </View>
       </BlurView>
 
-      {/* Bottom Button Section */}
       <View style={styles.bottomSection}>
         <TouchableOpacity style={styles.iconWrapper}>
           <Image
@@ -250,16 +249,16 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   gradientOverlay: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    height: '100%',
+    height: "100%",
   },
   corner: {
-    position: 'absolute',
-    borderColor: 'white',
-    backgroundColor: 'transparent',
+    position: "absolute",
+    borderColor: "white",
+    backgroundColor: "transparent",
   },
   topLeftCorner: {
     top: -2,

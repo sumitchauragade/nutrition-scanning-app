@@ -37,8 +37,10 @@ const ScanningProgress = () => {
         const newProgress = prevProgress + 10;
         if (newProgress >= 100) {
           clearInterval(intervalRef.current);
-          setTimeout(() => navigation.navigate("BottomTabNavigator", { screen: "Scan" }), 200);
-
+          setTimeout(
+            () => navigation.navigate("BottomTabNavigator", { screen: "Scan" }),
+            200
+          );
         }
         return newProgress;
       });
@@ -56,33 +58,25 @@ const ScanningProgress = () => {
 
   return (
     <View style={styles.container}>
-      {/* Logo */}
       <Image
         source={require("../assets/images/nutrak-logo2x.png")}
         style={styles.logo}
       />
 
-      {/* Rotating Circular Progress Icon */}
       <Animated.Image
         source={require("../assets/icons/loader2x.png")}
         style={[styles.progressIcon, { transform: [{ rotate: spin }] }]}
       />
 
-      {/* Scanning Text */}
       <Text style={styles.message}>Scanning in progress...</Text>
 
-      {/* Dynamic Linear Progress Bar */}
       <View style={styles.linearProgressContainer}>
         <View style={styles.linearProgress}>
           <View
-            style={[
-              styles.linearProgressFill,
-              { width: `${progress}%` },
-            ]}
+            style={[styles.linearProgressFill, { width: `${progress}%` }]}
           ></View>
         </View>
 
-        {/* Progress Percentage Text */}
         <Text style={styles.progressPercentage}>{progress}%</Text>
       </View>
     </View>
@@ -95,36 +89,36 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    paddingHorizontal: SCREEN_WIDTH * 0.05, // 5% horizontal padding for small devices
+    paddingHorizontal: SCREEN_WIDTH * 0.05,
   },
   logo: {
-    width: SCREEN_WIDTH * 0.25, // 25% of screen width
-    height: SCREEN_HEIGHT * 0.05, // 5% of screen height
+    width: SCREEN_WIDTH * 0.25,
+    height: SCREEN_HEIGHT * 0.05,
     position: "absolute",
-    top: SCREEN_HEIGHT * 0.1, // 10% from the top
+    top: SCREEN_HEIGHT * 0.1,
     resizeMode: "contain",
   },
   progressIcon: {
-    width: SCREEN_WIDTH * 0.4, // 40% of screen width
-    height: SCREEN_WIDTH * 0.4, // 40% of screen width (keeping it square)
+    width: SCREEN_WIDTH * 0.4,
+    height: SCREEN_WIDTH * 0.4,
     resizeMode: "contain",
-    marginBottom: SCREEN_HEIGHT * 0.03, // 3% margin below spinner
+    marginBottom: SCREEN_HEIGHT * 0.03,
   },
   message: {
-    fontSize: SCREEN_WIDTH * 0.04, // Scaled font size (4% of screen width)
+    fontSize: SCREEN_WIDTH * 0.04,
     color: "#666",
-    marginTop: SCREEN_HEIGHT * 0.02, // 2% margin above progress bar
+    marginTop: SCREEN_HEIGHT * 0.02,
     textAlign: "center",
   },
   linearProgressContainer: {
     alignItems: "center",
-    marginTop: SCREEN_HEIGHT * 0.03, // 3% vertical spacing
+    marginTop: SCREEN_HEIGHT * 0.03,
   },
   linearProgress: {
-    height: SCREEN_HEIGHT * 0.015, // 1.5% of screen height
-    width: SCREEN_WIDTH * 0.8, // 80% of screen width
+    height: SCREEN_HEIGHT * 0.015,
+    width: SCREEN_WIDTH * 0.8,
     backgroundColor: "#e0e0e0",
-    borderRadius: SCREEN_HEIGHT * 0.0075, // Rounded corners relative to height
+    borderRadius: SCREEN_HEIGHT * 0.0075,
     overflow: "hidden",
   },
   linearProgressFill: {
@@ -132,8 +126,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#6AB04A",
   },
   progressPercentage: {
-    marginTop: SCREEN_HEIGHT * 0.01, // 1% margin above the text
-    fontSize: SCREEN_WIDTH * 0.045, // Scaled font size (4.5% of screen width)
+    marginTop: SCREEN_HEIGHT * 0.01,
+    fontSize: SCREEN_WIDTH * 0.045,
     fontWeight: "bold",
     color: "#333",
     textAlign: "center",
@@ -141,4 +135,3 @@ const styles = StyleSheet.create({
 });
 
 export default ScanningProgress;
-

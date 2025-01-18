@@ -10,34 +10,32 @@ import {
 import { BlurView } from "expo-blur";
 import { useNavigation } from "@react-navigation/native";
 import PermissionModal from "../components/PermissionModal";
-import { Camera } from "expo-camera"; // Import Camera permissions
+import { Camera } from "expo-camera";
 
 const FoodScanningPage = () => {
   const navigation = useNavigation();
-  const [isModalVisible, setModalVisible] = useState(false); // State to control modal visibility
-  const [hasPermission, setHasPermission] = useState(null); // Camera permission state
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [hasPermission, setHasPermission] = useState(null);
 
-  // Function to handle "Capture" button press
   const handleCapturePress = async () => {
     const { status } = await Camera.getCameraPermissionsAsync();
     if (status !== "granted") {
-      setModalVisible(true); // Show permission modal if permission is not granted
+      setModalVisible(true);
     } else {
       setHasPermission(true);
-      navigation.navigate("CameraScreen"); // Navigate to the camera directly if permission is already granted
+      navigation.navigate("CameraScreen");
     }
   };
 
-  // Function to handle "Allow Access" button in modal
   const handleRequestPermission = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
     if (status === "granted") {
-      setHasPermission(true); // Update permission state
-      setModalVisible(false); // Close the modal
-      navigation.navigate("CameraScreen"); // Navigate to the camera screen
+      setHasPermission(true);
+      setModalVisible(false);
+      navigation.navigate("CameraScreen");
     } else {
-      setHasPermission(false); // Permission denied
-      setModalVisible(false); // Close the modal
+      setHasPermission(false);
+      setModalVisible(false);
     }
   };
 
@@ -93,7 +91,10 @@ const FoodScanningPage = () => {
         </TouchableOpacity>
 
         {/* Capture Button */}
-        <TouchableOpacity style={styles.captureButton} onPress={handleCapturePress}>
+        <TouchableOpacity
+          style={styles.captureButton}
+          onPress={handleCapturePress}
+        >
           <Image
             source={require("../assets/icons/button-icon1x.png")}
             style={styles.captureIcon}
@@ -112,8 +113,8 @@ const FoodScanningPage = () => {
       {/* Permission Modal */}
       <PermissionModal
         visible={isModalVisible}
-        onRequestPermission={handleRequestPermission} // Handle permission request
-        onCloseModal={() => setModalVisible(false)} // Handle modal close
+        onRequestPermission={handleRequestPermission}
+        onCloseModal={() => setModalVisible(false)}
       />
     </ImageBackground>
   );
@@ -242,4 +243,3 @@ const styles = StyleSheet.create({
 });
 
 export default FoodScanningPage;
-

@@ -1,10 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 
 const StreaksPage = () => {
   return (
     <ScrollView style={styles.container}>
-      {/* Top Navigation Bar */}
       <View style={styles.navBar}>
         <View style={styles.backButton}>
           <Image
@@ -21,144 +27,104 @@ const StreaksPage = () => {
         </View>
       </View>
 
-      {/* Streaks Section */}
       <View style={styles.streaksSection}>
-        {/* Streak Icon */}
         <Image
-          source={require("../assets/icons/Group2x.png")} // Replace with your streak icon
+          source={require("../assets/icons/Group2x.png")}
           style={styles.streakIcon}
         />
 
-        {/* Encouragement Content */}
         <View style={styles.streakContent}>
-          {/* First Line of Text */}
           <Text style={styles.encouragementText}>You're on a</Text>
 
-          {/* Streak Count */}
           <Text style={styles.streakCountText}>5 days Streak!</Text>
 
-          {/* Encouragement Message */}
           <Text style={styles.encouragementText}>Keep it up!</Text>
         </View>
       </View>
 
-      {/* Calendar Section */}
       <View style={styles.calendarSection}>
-        {/* Calendar Image */}
         <Image
-          source={require("../assets/images/calendar2x.png")} // Replace with your calendar image
+          source={require("../assets/images/calendar2x.png")}
           style={styles.calendarImage}
         />
 
-        {/* Milestone Badge */}
         <View style={styles.milestoneBadge}>
-          {/* Badge Icon */}
           <Image
-            source={require("../assets/icons/badge2x.png")} // Replace with your badge icon
+            source={require("../assets/icons/badge2x.png")}
             style={styles.badgeIcon}
           />
 
-          {/* Milestone Text */}
           <Text style={styles.milestoneText}>10-day streak achiever</Text>
         </View>
       </View>
-      {/* Milestones Section */}
-<View style={styles.milestonesSection}>
-  {/* Title and View All Button in One Row */}
-  <View style={styles.milestonesHeader}>
-    <Text style={styles.milestonesTitle}>Milestones</Text>
+      <View style={styles.milestonesSection}>
+        <View style={styles.milestonesHeader}>
+          <Text style={styles.milestonesTitle}>Milestones</Text>
 
-    <TouchableOpacity style={styles.viewAllButton}>
-      <Text style={styles.viewAllText}>View All</Text>
-      <Image
-        source={require("../assets/icons/keyboard_arrow_right2x.png")} // Replace with your keyboard arrow icon
-        style={styles.trailingIcon}
-      />
-    </TouchableOpacity>
-  </View>
-</View>
-<View style={styles.listSection}>
-  {/* List Item 1 */}
-  <View style={styles.listItem}>
-    {/* Badge */}
-    <View style={styles.badge}>
-      <Image
-        source={require("../assets/icons/Silver2x.png")} // Replace with your badge icon
-        style={styles.badgeIcon}
-      />
-    </View>
+          <TouchableOpacity style={styles.viewAllButton}>
+            <Text style={styles.viewAllText}>View All</Text>
+            <Image
+              source={require("../assets/icons/keyboard_arrow_right2x.png")}
+              style={styles.trailingIcon}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.listSection}>
+        <View style={styles.listItem}>
+          <View style={styles.badge}>
+            <Image
+              source={require("../assets/icons/Silver2x.png")}
+              style={styles.badgeIcon}
+            />
+          </View>
 
-    {/* Text */}
-    <Text style={styles.listItemText}>7-day streak achiever</Text>
+          <Text style={styles.listItemText}>7-day streak achiever</Text>
 
-    {/* Check Circle */}
-    <View style={styles.checkCircle}>
-      <Image
-        source={require("../assets/icons/check2x.png")} // Replace with your check circle icon
-        style={styles.checkCircleIcon}
-      />
-    </View>
-  </View>
+          <View style={styles.checkCircle}>
+            <Image
+              source={require("../assets/icons/check2x.png")}
+              style={styles.checkCircleIcon}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={styles.listSection}>
+        <View style={styles.listItem2}>
+          <View style={styles.badge}>
+            <Image
+              source={require("../assets/icons/badge2x.png")}
+              style={styles.badgeIcon}
+            />
+          </View>
 
-  {/* Add more list items as needed */}
-</View>
-<View style={styles.listSection}>
-  {/* List Item 2 */}
-  <View style={styles.listItem2}>
-    {/* Badge */}
-    <View style={styles.badge}>
-      <Image
-        source={require("../assets/icons/badge2x.png")} // Replace with your badge icon
-        style={styles.badgeIcon}
-      />
-    </View>
+          <Text style={styles.listItemText}>10-day streak achiever</Text>
+        </View>
+      </View>
+      <View style={styles.listSection}>
+        <View style={styles.listItem3}>
+          <View style={styles.badge}>
+            <Image
+              source={require("../assets/icons/Gold3x.png")}
+              style={styles.badgeIcon}
+            />
+          </View>
 
-    {/* Text */}
-    <Text style={styles.listItemText}>10-day streak achiever</Text>
+          <Text style={styles.listItemText}>20-day streak achiever</Text>
+        </View>
+      </View>
+      <View style={styles.listSection}>
+        <View style={styles.listItem4}>
+          <View style={styles.badge}>
+            <Image
+              source={require("../assets/icons/Platinum2x.png")}
+              style={styles.badgeIcon}
+            />
+          </View>
 
-    
-  </View>
-
-  {/* Add more list items as needed */}
-</View>
-<View style={styles.listSection}>
-  {/* List Item 3 */}
-  <View style={styles.listItem3}>
-    {/* Badge */}
-    <View style={styles.badge}>
-      <Image
-        source={require("../assets/icons/Gold3x.png")} // Replace with your badge icon
-        style={styles.badgeIcon}
-      />
-    </View>
-
-    {/* Text */}
-    <Text style={styles.listItemText}>20-day streak achiever</Text>
-
-    
-  </View>
-
-  {/* Add more list items as needed */}
-</View>
-<View style={styles.listSection}>
-  {/* List Item 4 */}
-  <View style={styles.listItem4}>
-    {/* Badge */}
-    <View style={styles.badge}>
-      <Image
-        source={require("../assets/icons/Platinum2x.png")} // Replace with your badge icon
-        style={styles.badgeIcon}
-      />
-    </View>
-
-    {/* Text */}
-    <Text style={styles.listItemText}>30-day streak achiever</Text>
-
-    
-  </View>
-
-  {/* Add more list items as needed */}
-</View>
+          <Text style={styles.listItemText}>30-day streak achiever</Text>
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -166,13 +132,11 @@ const StreaksPage = () => {
 export default StreaksPage;
 
 const styles = StyleSheet.create({
-  // Main container
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
   },
 
-  // Top Navigation Bar
   navBar: {
     width: "100%",
     height: 126,
@@ -180,19 +144,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background
-    zIndex: 10, // Ensures the nav bar stays on top
+    backgroundColor: "rgba(0, 0, 0, 0)",
+    zIndex: 10,
   },
 
-  
   backIcon: {
     width: 24,
     height: 24,
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: 20,
-    
-    tintColor: "#7B7B7B", // Neutral low emphasis color
+
+    tintColor: "#7B7B7B",
   },
   titleText: {
     fontFamily: "Roboto",
@@ -200,11 +163,9 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     lineHeight: 21.6,
     textAlign: "center",
-    color: "#141414", // Neutral high emphasis color
+    color: "#141414",
   },
-  shareButton: {
-    
-  },
+  shareButton: {},
   shareIcon: {
     width: 22,
     height: 22,
@@ -212,14 +173,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 17.41,
     height: 20,
-    paddingRight:20,
-    tintColor: "#565656", // Neutral medium emphasis color
+    paddingRight: 20,
+    tintColor: "#565656",
   },
 
-  // Streaks Section
   streaksSection: {
-    position: "absolute", // Makes the streaks section overlap
-    top: 66, // Pushes it just below the nav bar (height of nav bar)
+    position: "absolute",
+    top: 66,
     width: "100%",
     alignItems: "center",
     paddingVertical: 24,
@@ -256,18 +216,17 @@ const styles = StyleSheet.create({
     color: "#141414",
   },
 
-  // Calendar Section
   calendarSection: {
     width: 320,
     alignSelf: "center",
-    marginTop: 200, // Adds space between streaks section and calendar
+    marginTop: 200,
     padding: 12,
     paddingBottom: 32,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: "#EDEDED", // Neutral-N-200 border color
-    backgroundColor: "#FFFFFF", // Neutral-N-00 background
-    position: "relative", // To allow absolute positioning of the milestone badge
+    borderColor: "#EDEDED",
+    backgroundColor: "#FFFFFF",
+    position: "relative",
   },
   calendarImage: {
     width: 300,
@@ -276,12 +235,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
 
-  // Milestone Badge
   milestoneBadge: {
-    position: "absolute", // To overlap the bottom of the calendar
-    bottom: -14, // Adjust overlap (negative margin)
-    left: "50%", // Center horizontally
-    transform: [{ translateX: -93 }], // Center badge (half of its width)
+    position: "absolute",
+    bottom: -14,
+    left: "50%",
+    transform: [{ translateX: -93 }],
     width: 186,
     height: 28,
     flexDirection: "row",
@@ -291,95 +249,88 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "#E0D1C1",
-    backgroundColor: "#FFF8F0", // Light radial gradient background
+    backgroundColor: "#FFF8F0",
     shadowColor: "#000000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.15,
     shadowRadius: 2,
-    elevation: 1, // For Android shadow
+    elevation: 1,
   },
   badgeIcon: {
-    width: 20, // Adjust size of the badge icon as needed
+    width: 20,
     height: 20,
-    marginRight: 8, // Space between badge icon and text
+    marginRight: 8,
   },
   milestoneText: {
     fontFamily: "Roboto",
-    fontSize: 12, // Label/Medium font size
+    fontSize: 12,
     fontWeight: "400",
     lineHeight: 16,
     textAlign: "left",
-    color: "#141414", // Neutral high emphasis color
+    color: "#141414",
   },
   milestonesSection: {
     width: 360,
     marginTop: 24,
-    paddingHorizontal: 20, // Matches the padding specified in the layout
+    paddingHorizontal: 20,
   },
 
-  // Header Row for Milestones Title and View All Button
   milestonesHeader: {
-    flexDirection: "row", // Places items in a single row
-    justifyContent: "space-between", // Pushes the title to the left and button to the right
-    alignItems: "center", // Aligns items vertically in the center
-    marginBottom: 12, // Optional spacing below the header row
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
   },
 
-  // Milestones Title
   milestonesTitle: {
     fontFamily: "Roboto",
-    fontSize: 18, // Title/Large font size
+    fontSize: 18,
     fontWeight: "600",
     lineHeight: 21.6,
     textAlign: "left",
-    color: "#141414", // Neutral high emphasis color
+    color: "#141414",
   },
 
-  // View All Button
   viewAllButton: {
-    flexDirection: "row", // Align text and icon horizontally
-    alignItems: "center", // Center vertically
-    gap: 4, // Space between text and icon
-    borderRadius: 16, // Small corner radius
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    borderRadius: 16,
   },
 
-  // View All Button Text
   viewAllText: {
     fontFamily: "Roboto",
-    fontSize: 14, // Button/Small font size
+    fontSize: 14,
     fontWeight: "400",
     lineHeight: 20,
     textAlign: "left",
-    color: "#565656", // Neutral medium emphasis color
+    color: "#565656",
   },
 
-  // Trailing Icon (Arrow)
   trailingIcon: {
     width: 20,
     height: 20,
-    tintColor: "#565656", // Same color as the button text
+    tintColor: "#565656",
   },
-  // List Section
   listSection: {
-    width: 320, // Full width
+    width: 320,
     height: 48,
-    alignSelf: "center", // Center the list on the screen
-    marginTop: 24, // Space above the list
-    gap: 12, // Space between list items
+    alignSelf: "center",
+    marginTop: 24,
+    gap: 12,
   },
 
-  // List Item
   listItem: {
-    flexDirection: "row", // Align items horizontally
-    alignItems: "center", // Center vertically
-    width: "100%", // Full width of the container
-    paddingVertical: 12, // Top and bottom padding
-    paddingHorizontal: 16, // Left and right padding
-    borderRadius: 12, // Rounded corners
-    backgroundColor: "#F0F4F7", // Gradient fallback color
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    backgroundColor: "#F0F4F7",
     borderWidth: 1,
-    borderColor: "#F2F5F7", // Light gray border
-    position: "relative", // For absolute positioning of the badge and check circle
+    borderColor: "#F2F5F7",
+    position: "relative",
   },
   listItem2: {
     flexDirection: "row",
@@ -388,9 +339,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 12,
-    backgroundColor: "#F5E5D3", // Fallback for radial gradient
+    backgroundColor: "#F5E5D3",
     borderWidth: 1,
-    borderColor: "#FFF8F0", // Gradient border fallback
+    borderColor: "#FFF8F0",
     position: "relative",
   },
   listItem3: {
@@ -400,9 +351,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 12,
-    backgroundColor: "#DCEDF5", // Fallback for radial gradient
+    backgroundColor: "#DCEDF5",
     borderWidth: 1,
-    borderColor: "#EDF6FA", // Gradient border fallback
+    borderColor: "#EDF6FA",
     position: "relative",
   },
   listItem4: {
@@ -412,51 +363,48 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 12,
-    backgroundColor: "#F5F0FF", // Fallback for radial gradient
+    backgroundColor: "#F5F0FF",
     borderWidth: 1,
-    borderColor: "#F3F0FA", // Gradient border fallback
+    borderColor: "#F3F0FA",
     position: "relative",
   },
 
-  // Badge
   badge: {
     width: 32,
     height: 32,
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 12, // Space between badge and text
-    borderRadius: 16, // Full circle
-    backgroundColor: "#FFFFFF", // Background color for the badge
+    marginRight: 12,
+    borderRadius: 16,
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#DCDEE0", // Border color for the badge
+    borderColor: "#DCDEE0",
   },
   badgeIcon: {
-    width: 24, // Badge icon size
+    width: 24,
     height: 24,
   },
 
-  // List Item Text
   listItemText: {
-    flex: 1, // Take up remaining space
+    flex: 1,
     fontFamily: "Roboto",
-    fontSize: 14, // Label/Medium font size
+    fontSize: 14,
     fontWeight: "400",
     lineHeight: 18,
-    color: "#141414", // Neutral high emphasis color
+    color: "#141414",
   },
 
-  // Check Circle
   checkCircle: {
     width: 24,
     height: 24,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 12, // Full circle
-    backgroundColor: "#66BB6A", // High emphasis neutral color
+    borderRadius: 12,
+    backgroundColor: "#66BB6A",
   },
   checkCircleIcon: {
-    width: 16, // Check circle icon size
+    width: 16,
     height: 16,
-    tintColor: "#FFFFFF", // White color for the checkmark
+    tintColor: "#FFFFFF",
   },
 });
