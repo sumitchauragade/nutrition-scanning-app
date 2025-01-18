@@ -6,11 +6,14 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
+  Dimensions,
 } from "react-native";
 import { BlurView } from "expo-blur";
 import { useNavigation } from "@react-navigation/native";
 import PermissionModal from "../components/PermissionModal";
 import { Camera } from "expo-camera";
+
+const { width, height } = Dimensions.get("window");
 
 const FoodScanningPage = () => {
   const navigation = useNavigation();
@@ -127,8 +130,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   topBar: {
-    width: 360,
-    height: 132,
+    width: width * 0.9,
+    height: height * 0.2,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -140,9 +143,9 @@ const styles = StyleSheet.create({
   },
   instructionsBox: {
     position: "absolute",
-    top: 108,
-    width: 320,
-    height: 64,
+    top: height * 0.15,
+    width: width * 0.8,
+    height: height * 0.08,
     padding: 8,
     borderRadius: 12,
     flexDirection: "row",
@@ -156,8 +159,8 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   scanIcon: {
-    width: 32,
-    height: 32,
+    width: width * 0.08,
+    height: height * 0.04,
     paddingHorizontal: 2.67,
     paddingVertical: 4,
     opacity: 1,
@@ -169,16 +172,15 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   boldText: {
-    fontSize: 14,
+    fontSize: width * 0.035,
     fontWeight: "bold",
     color: "#fff",
   },
   descriptionText: {
-    fontSize: 12,
+    fontSize: width * 0.03,
     color: "#fff",
-    lineHeight: 16,
+    lineHeight: width * 0.04,
   },
-
   scanOverlay: {
     flex: 1,
     justifyContent: "center",
@@ -191,54 +193,28 @@ const styles = StyleSheet.create({
   },
   bottomSection: {
     position: "absolute",
-    top: 686,
-    width: 320,
-    height: 64,
+    bottom: height * 0.02,
+    width: width * 0.9,
+    height: height * 0.1,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: 0,
     borderRadius: 12,
   },
-
-  galleryIconWrapper: {
-    width: 40,
-    height: 40,
-    paddingTop: 8,
-    borderRadius: 40,
+  iconWrapper: {
+    width: width * 0.1,
+    height: width * 0.1,
+    borderRadius: (width * 0.1) / 2,
     justifyContent: "center",
     alignItems: "center",
   },
-  galleryIcon: {
-    width: 24,
-    height: 24,
-  },
-
   captureButton: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: "#fff",
+    width: width * 0.2,
+    height: width * 0.2,
+    borderRadius: (width * 0.2) / 2,
     justifyContent: "center",
     alignItems: "center",
     elevation: 5,
-  },
-  captureButtonIcon: {
-    width: 36,
-    height: 36,
-  },
-
-  oneXIconWrapper: {
-    width: 40,
-    height: 40,
-    paddingTop: 8,
-    borderRadius: 40,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  oneXIcon: {
-    width: 24,
-    height: 24,
   },
 });
 
