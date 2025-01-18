@@ -37,7 +37,8 @@ const ScanningProgress = () => {
         const newProgress = prevProgress + 10;
         if (newProgress >= 100) {
           clearInterval(intervalRef.current);
-          setTimeout(() => navigation.navigate("BottomTabNavigator", { screen: "NutritionResults" }), 200);
+          setTimeout(() => navigation.navigate("BottomTabNavigator", { screen: "Scan" }), 200);
+
         }
         return newProgress;
       });

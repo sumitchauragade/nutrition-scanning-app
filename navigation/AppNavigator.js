@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Text, View, StyleSheet, Dimensions } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -22,14 +22,24 @@ function PreTabStackNavigator() {
       <PreTabStack.Screen name="FoodScanning" component={FoodScanningPage} />
       <PreTabStack.Screen name="CameraScreen" component={CameraScreen} />
       <PreTabStack.Screen name="ScanningProgress" component={ScanningProgress} />
-      <PreTabStack.Screen name="NutritionResults" component={NutritionResultsPage} />
     </PreTabStack.Navigator>
+  );
+}
+
+// Create a new stack for NutritionResults with BottomTabs
+const NutritionStack = createStackNavigator();
+function NutritionStackNavigator() {
+  return (
+    <NutritionStack.Navigator screenOptions={{ headerShown: false }}>
+      <NutritionStack.Screen name="NutritionResults" component={NutritionResultsPage} />
+    </NutritionStack.Navigator>
   );
 }
 
 // BottomTabNavigator
 const Tab = createBottomTabNavigator();
 function BottomTabNavigator() {
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -100,7 +110,18 @@ function BottomTabNavigator() {
     >
       <Tab.Screen name="Home" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
       <Tab.Screen name="Logs" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
-      <Tab.Screen name="Scan" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
+      <Tab.Screen 
+        name="Scan" 
+        component={NutritionStackNavigator}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate('PreTabStackNavigator', { 
+              screen: 'CameraScreen' 
+            });
+          },
+        }} 
+      />
       <Tab.Screen name="Streaks" component={StreakPage} />
       <Tab.Screen name="Profile" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
     </Tab.Navigator>
