@@ -1,35 +1,35 @@
-
 import React from "react";
-import { Image, View, Text, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet, Dimensions } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
 
-// Import screens
-import HomeScreen from "../screens/HomeScreen";
-import StreakPage from "../screens/StreakPage";
+// Import screens (keeping your existing imports)
+import FoodScanningPage from "../screens/FoodScannigPage";
 import CameraScreen from "../screens/ScannerScreen";
 import ScanningProgress from "../screens/ScannigProgress";
 import NutritionResultsPage from "../screens/NutritionResultsPage";
-import FoodScanningPage from "../screens/FoodScannigPage";
+import StreakPage from "../screens/StreakPage";
+import HomeScreen from "../screens/HomeScreen";
 
-// Stack Navigator for Pre-Tab Flow
-const Stack = createStackNavigator();
-const PreTabStack = () => {
+const windowWidth = Dimensions.get('window').width;
+
+// PreTabStackNavigator
+const PreTabStack = createStackNavigator();
+function PreTabStackNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="FoodScanning" component={FoodScanningPage} />
-      <Stack.Screen name="CameraScreen" component={CameraScreen} />
-      <Stack.Screen name="ScanningProgress" component={ScanningProgress} />
-      <Stack.Screen name="NutritionResults" component={NutritionResultsPage} />
-      <Stack.Screen name="MainTabs" component={BottomTabNavigator} />
-    </Stack.Navigator>
+    <PreTabStack.Navigator screenOptions={{ headerShown: false }}>
+      <PreTabStack.Screen name="FoodScanning" component={FoodScanningPage} />
+      <PreTabStack.Screen name="CameraScreen" component={CameraScreen} />
+      <PreTabStack.Screen name="ScanningProgress" component={ScanningProgress} />
+      <PreTabStack.Screen name="NutritionResults" component={NutritionResultsPage} />
+    </PreTabStack.Navigator>
   );
-};
+}
 
-// Bottom Tab Navigator
+// BottomTabNavigator
 const Tab = createBottomTabNavigator();
-const BottomTabNavigator = () => {
+function BottomTabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -58,12 +58,15 @@ const BottomTabNavigator = () => {
               : require("../assets/icons/profile-icon2x.png");
           }
 
-          const iconStyle =
-            route.name === "Scan"
-              ? [styles.scanIcon]
-              : [styles.icon, { tintColor: color }];
+          if (route.name === "Scan") {
+            return (
+              <View style={styles.scanIconContainer}>
+                <Image source={icon} style={styles.scanIcon} />
+              </View>
+            );
+          }
 
-          return <Image source={icon} style={iconStyle} />;
+          return <Image source={icon} style={[styles.icon, { tintColor: color }]} />;
         },
         tabBarLabel: ({ focused }) => {
           let label;
@@ -95,61 +98,70 @@ const BottomTabNavigator = () => {
         tabBarInactiveTintColor: "#565656",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Logs" component={HomeScreen} />
-      <Tab.Screen name="NutritionResults" component={NutritionResultsPage} />
+      <Tab.Screen name="Home" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
+      <Tab.Screen name="Logs" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
+      <Tab.Screen name="Scan" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
       <Tab.Screen name="Streaks" component={StreakPage} />
-      <Tab.Screen name="Profile" component={HomeScreen} />
+      <Tab.Screen name="Profile" component={HomeScreen} listeners={{ tabPress: e => e.preventDefault() }} />
     </Tab.Navigator>
   );
-};
+}
 
-// App Navigator (Main Entry Point)
+// Root Stack Navigator
+const RootStack = createStackNavigator();
+function RootNavigator() {
+  return (
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+      <RootStack.Screen name="PreTabStackNavigator" component={PreTabStackNavigator} />
+      <RootStack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
+    </RootStack.Navigator>
+  );
+}
+
+// Main App Navigator
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <PreTabStack />
+      <RootNavigator />
     </NavigationContainer>
   );
 };
 
-// Styles for the Bottom Tab Navigator
 const styles = StyleSheet.create({
-  tabBar: {
-    width: "100%",
-    height: 68,
-    paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 74,
-    backgroundColor: "#FFFFFF",
-    borderTopWidth: 1,
-    borderTopColor: "#EDEDED",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-  tabItem: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-  scanIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: "#EDEDED",
-    backgroundColor: "#FFF",
-  },
-  tabBarLabel: {
-    fontSize: 12,
-    fontWeight: "500",
-    marginTop: 4,
-    textAlign: "center",
-  },
+    tabBar: {
+        height: 68,
+        paddingHorizontal: 20,
+        paddingTop: 12,
+        paddingBottom: 12,
+        backgroundColor: "#FFFFFF",
+        borderTopWidth: 1,
+        borderTopColor: "#EDEDED",
+      },
+      icon: {
+        width: 24,
+        height: 24,
+      },
+      scanIconContainer: {
+        width: 24,
+        height: 24,
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      scanIcon: {
+        width: 48,
+        height: 48,
+        borderRadius: 24,
+        borderWidth: 1,
+        borderColor: "#EDEDED",
+        backgroundColor: "#FFF",
+        marginTop: -12,
+      },
+      tabBarLabel: {
+        fontSize: 12,
+        fontWeight: "500",
+        marginTop: 4,
+        textAlign: "center",
+      }
 });
 
 export default AppNavigator;
